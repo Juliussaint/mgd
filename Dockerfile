@@ -13,10 +13,6 @@ RUN apt-get update && apt-get install -y \
     curl \
     && rm -rf /var/lib/apt/lists/*
 
-# Install Node.js LTS
-RUN curl -fsSL https://deb.nodesource.com/setup_20.x | bash - \
-    && apt-get install -y nodejs
-
 WORKDIR /app
 
 # Install Python deps
@@ -25,13 +21,6 @@ RUN pip install --no-cache-dir --user -r requirements.txt
 
 # Copy project
 COPY . /app/
-
-# ------------------------
-# Build Tailwind CSS
-# ------------------------
-WORKDIR /app/theme/static_src
-RUN npm install --no-audit --no-fund
-RUN npm run build
 
 # Back to root
 WORKDIR /app
@@ -63,6 +52,6 @@ COPY --from=builder /app /app
 
 RUN chmod +x /app/entrypoint.sh
 
-EXPOSE 8000
+EXPOSE 80
 
 CMD ["/app/entrypoint.sh"]
