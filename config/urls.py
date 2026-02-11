@@ -3,6 +3,7 @@ from django.urls import path, include
 from django.conf import settings
 from django.conf.urls.static import static
 from agency import views as agency_views
+from django.views.static import serve # Import view serve langsung
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -11,11 +12,14 @@ urlpatterns = [
     path("ckeditor5/", include('django_ckeditor_5.urls')),
 ]
 
-if settings.DEBUG:
-    # Development: Gagal aman tapi gambar muncul
-    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
-else:
-    # Production: Aman
-    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+
+print(f"DEBUG MEDIA_ROOT: {settings.MEDIA_ROOT}") # Akan muncul di CapRover Logs
+
+if settings.MEDIA_URL:
+    urlpatterns += [
+        path(f'{settings.MEDIA_URL.lstrip("/")}<path:path>', serve, {
+            'document_root': settings.MEDIA_ROOT,
+        }),
+    ]
 
 handler404 = agency_views.custom_404
