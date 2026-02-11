@@ -1,0 +1,163 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    
+    
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>MGD | Mega Genius Digital Agency</title>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;700&family=Syncopate:wght@400;700&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+<body>
+    <!-- Custom Cursor -->
+    <div class="cursor-dot" id="cursor-dot"></div>
+    <div class="cursor-outline" id="cursor-outline"></div>
+
+    <!-- WebGL Background -->
+    <div id="canvas-container"></div>
+
+    <!-- Bottom Scroll Light -->
+    <div class="bottom-light-beam" id="bottom-beam"></div>
+
+    <!-- Navigation -->
+    <nav>
+        <div class="nav-logo magnetic-area">
+            <div class="magnetic-wrap">
+                <!-- Primary Logo -->
+                <a href="{% url 'home' %}"><img src="{% static 'agency/img/primary-logo-mgd.png' %}" alt="Mega Genius Digital Logo"></a>
+            </div>
+        </div>
+        <ul class="nav-links">
+            <li class="magnetic-area"><a href="{% url 'work' %}" class="nav-link magnetic-wrap">Work</a></li>
+            <li class="magnetic-area"><a href="{% url 'expertise_list' %}" class="nav-link magnetic-wrap">Expertise</a></li>
+            <li class="magnetic-area"><a href="{% url 'about' %}" class="nav-link magnetic-wrap">About MGD</a></li>
+            <li class="magnetic-area"><a href="{% url 'blog_list' %}" class="nav-link magnetic-wrap">Blog</a></li>
+            <li class="magnetic-area"><a href="{% url 'contact' %}" class="nav-link magnetic-wrap">Start Project</a></li>
+        </ul>
+    </nav>
+
+    <!-- Dynamic Content Block -->
+    {% block content %}{% endblock %}
+
+    <footer>
+        <div class="footer-grid">
+
+            <!-- Brand -->
+            <div class="footer-brand">
+            <img src="{% static 'agency/img/submark-logo-mgd.png' %}" alt="MGD">
+
+            <p>
+                PT Mega Genius Digital is a Digital Agency blending <strong>Genius Strategy</strong> with 
+                <strong>Creative Technology</strong> to help visionary brands lead the digital era.
+            </p>
+
+
+            <div class="social-links">
+
+                <!-- Instagram -->
+                <a href="https://www.instagram.com/megageniusdigital/">
+                    <svg viewBox="0 0 24 24"><path d="M7 2h10a5 5 0 0 1 5 5v10a5 5 0 0 1-5 5H7a5 5 0 0 1-5-5V7a5 5 0 0 1 5-5zm5 5a5 5 0 1 0 0 10 5 5 0 0 0 0-10zm6.5-.9a1.1 1.1 0 1 0 0 2.2 1.1 1.1 0 0 0 0-2.2z"/></svg>
+                </a>
+
+                <!-- Facebook -->
+                <a href="https://www.facebook.com/megageniusdigitalagency">
+                    <svg viewBox="0 0 24 24"><path d="M13 3h4v4h-4v3h4v4h-4v7h-4v-7H6v-4h3V7a4 4 0 0 1 4-4z"/></svg>
+                </a>
+
+                <!-- Threads -->
+                <a href="https://www.threads.com/@megageniusdigital">
+                    <svg viewBox="0 0 24 24"><path d="M12 2c5.5 0 10 4.2 10 9.4 0 4.7-3.7 8.6-8.6 9.3v-3c3.1-.5 5.4-3 5.4-6.3 0-3.6-3.2-6.4-6.8-6.4S5.2 7.8 5.2 11.4c0 2.6 1.7 4.9 4.1 5.8V12h2.6v10h-1.3C5.5 20.6 2 16.4 2 11.4 2 6.2 6.5 2 12 2z"/></svg>
+                </a>
+
+                <!-- YouTube -->
+                <a href="https://www.youtube.com/@megageniusdigital">
+                    <svg viewBox="0 0 24 24"><path d="M23 7s-1-3-4-3H5C2 4 1 7 1 7s-1 3-1 5 1 5 1 5 1 3 4 3h14c3 0 4-3 4-3s1-3 1-5-1-5-1-5zM10 15V9l6 3-6 3z"/></svg>
+                </a>
+
+                <!-- TikTok -->
+                <a href="https://www.tiktok.com/@megagenius_digitalagency">
+                    <svg viewBox="0 0 24 24"><path d="M16 2h3a5 5 0 0 0 5 5v3a8 8 0 0 1-5-1.6V16a6 6 0 1 1-6-6h1v3a3 3 0 1 0 3 3V2z"/></svg>
+                </a>
+
+                <!-- X (Twitter) -->
+                <a href="https://x.com/MGD_agency">
+                    <svg viewBox="0 0 24 24"><path d="M18.2 2H22l-8.3 9.5L23 22h-6.3l-5-6.2L6 22H2l8.8-10L1 2h6.4l4.5 5.6L18.2 2z"/></svg>
+                </a>
+
+                <!-- LinkedIn -->
+                <a href="https://www.linkedin.com/company/mega-genius-digital/">
+                    <svg viewBox="0 0 24 24"><path d="M4 3a2 2 0 1 1 0 4 2 2 0 0 1 0-4zm-2 6h4v13H2V9zm7 0h4v2h.1a4.4 4.4 0 0 1 4-2.2c4.3 0 5 2.8 5 6.4V22h-4v-5.6c0-1.3 0-3-1.9-3s-2.1 1.5-2.1 2.9V22H9V9z"/></svg>
+                </a>
+
+                </div>
+
+            </div>
+
+            <!-- Navigation -->
+            <div class="footer-col">
+            <h3>Explore</h3>
+            <ul class="footer-links">
+                <li><a href="{% url 'home' %}">Home</a></li>
+                <li><a href="{% url 'work' %}">Our Work</a></li>
+                <li><a href="{% url 'about' %}">About Us</a></li>
+                <li><a href="{% url 'blog_list' %}">Insights & Blog</a></li>
+                <li><a href="{% url 'contact' %}">Contact</a></li>
+            </ul>
+            </div>
+
+            <!-- Service -->
+            <div class="footer-col">
+            <h3>Services</h3>
+            <ul class="footer-links">
+                <li><a href="{% url 'service_detail' slug='developer-web-app-software' %}">Web Development</a></li>
+                <li><a href="{% url 'service_detail' slug='creative-production-branding' %}">UI/UX Design</a></li>
+                <li><a href="{% url 'service_detail' slug='digital-marketing-paid-ads' %}">Digital Strategy</a></li>
+                <li><a href="{% url 'service_detail' slug='creative-production-branding' %}">Brand Identity</a></li>
+            </ul>
+            </div>
+
+            <!-- Contact -->
+            <div class="footer-col">
+            <h3>Get in Touch</h3>
+            <ul class="footer-links">
+                <li><a href="mailto:contact@megageniusdigital.com">contact@megageniusdigital.com</a></li>
+                <li><a href="tel:+628194484800">+62 819 4484 800</a></li>
+                <li style="color:#888">Jl. Sriwijaya Raya No. H8, Cimahi</li>
+                <li style="color:#888">West Java, Indonesia</li>
+            </ul>
+            </div>
+
+        </div>
+
+        <div class="footer-bottom">
+            <p>© 2026 MEGA GENIUS DIGITAL. ALL RIGHTS RESERVED.</p>
+            &nbsp;
+            <div class="footer-legal">
+            <a href="#">Privacy</a>
+            <a href="#">Terms</a>
+            <a href="#">Cookies</a>
+            </div>
+        </div>
+    </footer>
+
+
+    <!-- Load Three.js Library -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    
+    <!-- Load Our Custom Script -->
+    <script src="{% static 'js/main.js' %}"></script>
+
+</body>
+</html>

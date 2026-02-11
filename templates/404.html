@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <main class="container" style="height: 80vh; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center;">
+        <h1 style="font-size: 10rem; color: var(--accent); font-family: var(--font-display); margin: 0; line-height: 1;">
+            404
+        </h1>
+        <h2 style="font-family: var(--font-display); color: #fff; margin-bottom: 2rem;">
+            SYSTEM ERROR // PAGE NOT FOUND
+        </h2>
+        <p style="color: #888; margin-bottom: 2rem;">
+            Data yang Anda cari tidak ditemukan di ekosistem kami.
+        </p>
+        <a href="{% url 'home' %}" class="cta-btn">RETURN TO BASE</a>
+    </main>
+{% endblock %}

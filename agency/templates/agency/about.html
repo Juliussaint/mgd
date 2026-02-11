@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <main class="container">
+        <div style="height: 100px;"></div>
+
+        <div class="section-title">
+            <span>The Geniuses</span>
+        </div>
+
+        <div class="hero-sub" style="margin-bottom: 4rem;">
+            <p>Kami adalah sekumpulan visioner digital, pengembang kode, dan seniman desain di PT Mega Genius Digital yang berdedikasi menciptakan solusi web inovatif untuk melampaui standar industri dan mendorong pertumbuhan bisnis di era digital.</p>
+        </div>
+
+        <div class="projects-grid"> <!-- Menggunakan layout grid yang sama -->
+            {% for member in team_members %}
+                <div class="project-card" style="align-items: center; justify-content: center; text-align: center;">
+                    <img src="{{ member.photo.url }}" alt="{{ member.name }}" 
+                         style="width: 150px; height: 150px; border-radius: 50%; object-fit: cover; border: 2px solid var(--accent); z-index: 2; margin-bottom: 1.5rem;">
+                    
+                    <div class="card-content">
+                        <h3 class="card-title">{{ member.name }}</h3>
+                        <p class="card-tags">{{ member.role }}</p>
+                        <p style="margin-top: 1rem; color: #aaa; font-size: 0.9rem;">{{ member.bio }}</p>
+                    </div>
+                </div>
+            {% empty %}
+                <p>Tidak ada anggota tim yang terdaftar.</p>
+            {% endfor %}
+        </div>
+    </main>
+{% endblock %}

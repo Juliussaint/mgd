@@ -1,0 +1,162 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+    <main class="container">
+        
+        <!-- Hero Section -->
+        <header>
+            <div class="hero-logo-container">
+                <img src="{% static 'agency/img/simplified-logo-mgd.png' %}" alt="MGD Logo Icon">
+            </div>
+            
+            <h1>Mega Genius<br>Digital</h1>
+            
+            <div class="hero-sub">
+                We build digital ecosystems that defy convention. 
+                MGD combines strategic genius with cutting-edge technology 
+                to transform your enterprise.
+            </div>
+
+            <a href="#contact" class="cta-btn magnetic-area">
+                <div class="magnetic-wrap">Start Project</div>
+            </a>
+        </header>
+
+        <!-- --- UPDATE: Scrolling Client Trust Logos --- -->
+        <section class="client-marquee-section">
+            <span class="client-marquee-title">Trusted By</span>
+            
+            <div class="logo-marquee-track">
+                <!-- SET PERTAMA -->
+                <div class="logo-marquee-item">Novel Indonesia</div>
+                <div class="logo-marquee-item">PT Clean Best Indonesia</div>
+                <div class="logo-marquee-item">PT BPR KS</div>
+                <div class="logo-marquee-item">PT Geonesia Survey</div>
+                <div class="logo-marquee-item">PT Mandiri Towing</div>
+                <div class="logo-marquee-item">PT. Suzuki Indomobil Sales</div>
+                <div class="logo-marquee-item">PT Hebel Indonesia</div>
+                <div class="logo-marquee-item">PT Asia Tenda</div>
+                <div class="logo-marquee-item">GPIB</div>
+                <div class="logo-marquee-item">PT Astra Honda Motor</div>
+
+                <!-- SET KEDUA (Duplikat untuk loop mulus) -->
+                <div class="logo-marquee-item">Novel Indonesia</div>
+                <div class="logo-marquee-item">PT Clean Best Indonesia</div>
+                <div class="logo-marquee-item">PT BPR KS</div>
+                <div class="logo-marquee-item">PT Geonesia Survey</div>
+                <div class="logo-marquee-item">PT Mandiri Towing</div>
+                <div class="logo-marquee-item">PT. Suzuki Indomobil Sales</div>
+                <div class="logo-marquee-item">PT Hebel Indonesia</div>
+                <div class="logo-marquee-item">PT Asia Tenda</div>
+                <div class="logo-marquee-item">GPIB</div>
+                <div class="logo-marquee-item">PT Astra Honda Motor</div>
+                
+                <!-- SET KETIGA (Duplikat untuk loop mulus) -->
+                <div class="logo-marquee-item">Novel Indonesia</div>
+                <div class="logo-marquee-item">PT Clean Best Indonesia</div>
+                <div class="logo-marquee-item">PT BPR KS</div>
+                <div class="logo-marquee-item">PT Geonesia Survey</div>
+                <div class="logo-marquee-item">PT Mandiri Towing</div>
+                <div class="logo-marquee-item">PT. Suzuki Indomobil Sales</div>
+                <div class="logo-marquee-item">PT Hebel Indonesia</div>
+                <div class="logo-marquee-item">PT Asia Tenda</div>
+                <div class="logo-marquee-item">GPIB</div>
+                <div class="logo-marquee-item">PT Astra Honda Motor</div>
+            </div>
+        </section>
+
+        <!-- --- BARU: Animated Stats --- -->
+        <section class="stats-section">
+            <div class="stat-card">
+                <span class="stat-number">50+</span>
+                <span class="stat-label">Projects Delivered</span>
+            </div>
+            <div class="stat-card">
+                <span class="stat-number">98%</span>
+                <span class="stat-label">Client Satisfaction</span>
+            </div>
+            <div class="stat-card">
+                <span class="stat-number">5+</span>
+                <span class="stat-label">Years Experience</span>
+            </div>
+            <div class="stat-card">
+                <span class="stat-number">24/7</span>
+                <span class="stat-label">Support System</span>
+            </div>
+        </section>
+
+        <!-- --- BARU: Service Highlights --- -->
+        <section class="service-preview-section">
+            <div class="section-title" style="margin-bottom: 2rem;">
+                <span>What We Do</span>
+            </div>
+            <div class="service-preview-grid">
+                <!-- Mengambil 3 layanan pertama dari DB -->
+                {% for service in services|slice:":3" %}
+                    <div class="service-preview-item">
+                        <h3 class="sp-title">{{ service.title }}</h3>
+                        <p class="sp-desc">{{ service.description }}</p>
+                    </div>
+                {% empty %}
+                    <!-- Fallback jika database kosong -->
+                    <div class="service-preview-item">
+                        <h3 class="sp-title">Web Development</h3>
+                        <p class="sp-desc">High-performance web solutions built with Django and modern JS frameworks.</p>
+                    </div>
+                    <div class="service-preview-item">
+                        <h3 class="sp-title">UI/UX Design</h3>
+                        <p class="sp-desc">Crafting intuitive interfaces that engage users and drive conversions.</p>
+                    </div>
+                    <div class="service-preview-item">
+                        <h3 class="sp-title">Digital Strategy</h3>
+                        <p class="sp-desc">Data-driven marketing and branding strategies to grow your business.</p>
+                    </div>
+                {% endfor %}
+            </div>
+        </section>
+
+        <!-- --- BARU: Testimonial --- -->
+        <section class="testimonial-section">
+            <div class="quote-mark">“</div>
+            <p class="testimonial-text">
+                Mulai dari branding hingga pengembangan aplikasi SaaS yang kompleks, MGD 
+                mengeksekusinya dengan sangat presisi. Mereka adalah mitra strategis terbaik 
+                untuk mengakselerasi bisnis di era digital.
+            </p>
+            <p class="testimonial-author">— Dr. Irfan Hakim, Direktur Utama Sinergi Tech</p>
+        </section>
+
+        <!-- Marquee Section -->
+        <section class="marquee-section">
+            <div class="marquee-content">
+                <span class="marquee-text">CUSTOM SOFTWARE • SAAS DEVELOPMENT • GENERATIVE ENGINE OPTIMIZATION • PAID ADS STRATEGY • BRAND IDENTITY • UI/UX DESIGN • AI INTEGRATION • CUSTOM SOFTWARE • SAAS DEVELOPMENT • GENERATIVE ENGINE OPTIMIZATION • PAID ADS STRATEGY • BRAND IDENTITY • UI/UX DESIGN • AI INTEGRATION •</span>
+                <span class="marquee-text">CUSTOM SOFTWARE • SAAS DEVELOPMENT • GENERATIVE ENGINE OPTIMIZATION • PAID ADS STRATEGY • BRAND IDENTITY • UI/UX DESIGN • AI INTEGRATION • CUSTOM SOFTWARE • SAAS DEVELOPMENT • GENERATIVE ENGINE OPTIMIZATION • PAID ADS STRATEGY • BRAND IDENTITY • UI/UX DESIGN • AI INTEGRATION •</span>
+            </div>
+        </section>
+
+        <!-- Projects Section -->
+        <section id="work">
+            <div class="section-title">
+                <img src="{% static 'agency/img/secondary-logo-mgd.png' %}" alt="MGD Mark">
+                <span>Selected Case Studies</span>
+            </div>
+            
+            <div class="projects-grid">
+                {% for project in featured_projects %}
+                    <article class="project-card tilt-card">
+                        <img src="{{ project.thumbnail.url }}" alt="{{ project.title }}" class="card-bg-img">
+                        <div class="card-glare"></div>
+                        <div class="card-content">
+                            <h3 class="card-title">{{ project.title }}</h3>
+                            <p class="card-tags">{{ project.technologies }}</p>
+                        </div>
+                    </article>
+                {% empty %}
+                    <p style="color: #666;">No featured projects yet.</p>
+                {% endfor %}
+            </div>
+        </section>
+
+    </main>
+{% endblock %}

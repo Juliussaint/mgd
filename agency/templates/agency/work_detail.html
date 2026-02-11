@@ -1,0 +1,82 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+    <main class="container">
+        <div style="height: 60px;"></div>
+
+        <!-- Tombol Kembali -->
+        <a href="{% url 'work' %}" style="color: var(--accent); text-decoration: none; font-family: var(--font-display); display: inline-block; margin-bottom: 2rem;">
+            ← BACK TO WORK
+        </a>
+
+        <!-- Header Project -->
+        <header style="margin-bottom: 4rem; text-align: left;">
+            <p style="color: var(--accent); font-family: var(--font-display); letter-spacing: 2px; text-transform: uppercase; margin-bottom: 0.5rem;">
+                {{ project.category }}
+            </p>
+            <h1 style="font-family: var(--font-display); font-size: 3.5rem; line-height: 1; margin-bottom: 1rem;">
+                {{ project.title }}
+            </h1>
+            
+            <!-- Meta Data: Client, Date, Tech -->
+            <div style="display: flex; gap: 2rem; color: #888; font-size: 0.9rem;">
+                <span><strong style="color: #fff;">CLIENT:</strong> {{ project.client_name }}</span>
+                <span><strong style="color: #fff;">YEAR:</strong> {{ project.created_at|date:"Y" }}</span>
+            </div>
+        </header>
+
+        <!-- Hero Image Besar -->
+        <div style="margin-bottom: 4rem;">
+            <img src="{{ project.thumbnail.url }}" alt="{{ project.title }}" 
+                 style="width: 100%; height: auto; border-radius: 4px; border: 1px solid var(--border-color);">
+        </div>
+
+        {% if project.images.all %}
+            <div class="project-gallery" style="margin-bottom: 6rem;">
+                <h3 style="font-family: var(--font-display); margin-bottom: 2rem; color: #fff; text-align: center;">PROJECT GALLERY</h3>
+                
+                <div class="gallery-grid">
+                    {% for img in project.images.all %}
+                        <div class="gallery-item">
+                            <img src="{{ img.image.url }}" alt="Project Image" style="width: 100%; height: 100%; object-fit: cover; border-radius: 4px;">
+                        </div>
+                    {% endfor %}
+                </div>
+            </div>
+        {% endif %}
+
+        <!-- Deskripsi Project -->
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; margin-bottom: 6rem;">
+            
+            <!-- Kolom Kiri: Story -->
+            <div>
+                <h3 style="font-family: var(--font-display); margin-bottom: 1.5rem; color: #fff;">The Story</h3>
+                <div style="color: #ccc; line-height: 1.8; font-size: 1.1rem;">
+                    {{ project.description }}
+                </div>
+            </div>
+
+            <!-- Kolom Kanan: Stack Tech & Link -->
+            <div>
+                <div style="background: rgba(255,255,255,0.03); padding: 2rem; border: 1px solid var(--border-color);">
+                    <h3 style="font-family: var(--font-display); margin-bottom: 1.5rem; color: #fff;">Tech Stack</h3>
+                    <p style="color: var(--accent); font-family: var(--font-body); letter-spacing: 1px; line-height: 2;">
+                        {{ project.technologies }}
+                    </p>
+                    
+                    {% if project.project_url %}
+                    <div style="margin-top: 3rem;">
+                        <a href="{{ project.project_url }}" target="_blank" 
+                           class="cta-btn" style="text-align: center; display: block; width: 100%;">
+                            LAUNCH PROJECT
+                        </a>
+                    </div>
+                    {% endif %}
+                </div>
+            </div>
+
+        </div>
+
+    </main>
+{% endblock %}

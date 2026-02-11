@@ -1,0 +1,67 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <main class="container">
+        <div style="height: 100px;"></div>
+
+        <div class="section-title">
+            <span>Start Project</span>
+        </div>
+
+        <div style="display: flex; gap: 4rem; flex-wrap: wrap; justify-content: center; margin-top: 2rem;">
+            
+            <!-- Info Kiri -->
+            <div style="flex: 1; min-width: 300px;">
+                <h2 style="font-family: var(--font-display); margin-bottom: 1.5rem; font-size: 2rem;">Mari Bicara</h2>
+                <p style="margin-bottom: 2rem; color: #ccc;">Siap untuk meningkatkan bisnis Anda ke level berikutnya? Hubungi kami hari ini.</p>
+                
+                <div style="margin-bottom: 1.5rem;">
+                    <strong style="color: var(--accent); display: block; margin-bottom: 0.5rem;">EMAIL</strong>
+                    <span style="color: #fff;">contact@megageniusdigital.com</span>
+                </div>
+                
+                <div style="margin-bottom: 1.5rem;">
+                    <strong style="color: var(--accent); display: block; margin-bottom: 0.5rem;">LOKASI</strong>
+                    <span style="color: #fff;">Jl. Sriwijaya Raya No. H8, Karang Mekar, Kota Cimahi</span>
+                </div>
+            </div>
+
+            <!-- Form Kanan -->
+            <div style="flex: 1; min-width: 300px; background: var(--card-bg); padding: 2.5rem; border: 1px solid var(--border-color); border-radius: 4px;">
+                
+                {% if message_sent %}
+                    <div style="background: var(--accent); color: #000; padding: 1rem; margin-bottom: 1.5rem; font-weight: bold;">
+                        Pesan Anda telah terkirim! Tim kami akan segera menghubungi Anda.
+                    </div>
+                {% endif %}
+
+                <form method="post" action="{% url 'contact' %}">
+                    {% csrf_token %}
+                    
+                    <div style="margin-bottom: 1.5rem;">
+                        <label style="display: block; margin-bottom: 0.5rem; color: var(--accent);">NAMA</label>
+                        <input type="text" name="name" required 
+                               style="width: 100%; padding: 1rem; background: rgba(0,0,0,0.5); border: 1px solid var(--border-color); color: #fff; outline: none;">
+                    </div>
+
+                    <div style="margin-bottom: 1.5rem;">
+                        <label style="display: block; margin-bottom: 0.5rem; color: var(--accent);">EMAIL</label>
+                        <input type="email" name="email" required 
+                               style="width: 100%; padding: 1rem; background: rgba(0,0,0,0.5); border: 1px solid var(--border-color); color: #fff; outline: none;">
+                    </div>
+
+                    <div style="margin-bottom: 2rem;">
+                        <label style="display: block; margin-bottom: 0.5rem; color: var(--accent);">PESAN</label>
+                        <textarea name="message" rows="5" required 
+                                  style="width: 100%; padding: 1rem; background: rgba(0,0,0,0.5); border: 1px solid var(--border-color); color: #fff; outline: none;"></textarea>
+                    </div>
+
+                    <button type="submit" class="cta-btn" style="width: 100%; cursor: pointer;">
+                        KIRIM PESAN
+                    </button>
+                </form>
+            </div>
+
+        </div>
+    </main>
+{% endblock %}

@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <main class="container">
+        <div style="height: 100px;"></div> <!-- Spacer -->
+        
+        <div class="section-title">
+            <span>All Projects</span>
+        </div>
+
+        <div class="projects-grid">
+            {% for project in projects %}
+                <a href="{% url 'work_detail' project.slug %}" style="text-decoration: none; color: inherit;">
+                    <article class="project-card tilt-card">
+                        <img src="{{ project.thumbnail.url }}" alt="{{ project.title }}" class="card-bg-img">
+                        <div class="card-glare"></div>
+                        <div class="card-content">
+                            <h3 class="card-title">{{ project.title }}</h3>
+                            <p class="card-tags">{{ project.category }}</p>
+                        </div>
+                    </article>
+                </a>
+            {% empty %}
+                <p>Tidak ada proyek yang ditemukan.</p>
+            {% endfor %}
+        </div>
+    </main>
+{% endblock %}

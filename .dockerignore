@@ -1,0 +1,44 @@
+# Git files
+.git
+.gitignore
+
+# Python cache
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Virtual environments
+venv/
+env/
+ENV/
+
+# Local environment variables
+.env
+
+# Logs
+*.log
+
+# IDE/editor files
+.qodo/
+.vscode/
+.idea/
+
+# OS junk
+.DS_Store
+Thumbs.db
+
+#Database
+*.sql
+
+# Local build artifacts
+*.tar
+
+# Docker artifacts
+Dockerfile
+docker-compose.yml
+
+# Collected static files (optional, biar dikumpulin ulang di container)
+staticfiles/
+
+startdeploy.sh

@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+    <main class="container">
+        <div style="height: 100px;"></div>
+        
+        <div class="section-title">
+            <span>Our Expertise</span>
+        </div>
+
+        <div class="hero-sub" style="text-align: left; border: none; padding: 0;">
+            <p>Kami menggabungkan kreativitas teknis dengan strategi bisnis untuk memberikan solusi digital yang lengkap.</p>
+        </div>
+
+        <!-- Grid untuk menampilkan semua Service -->
+        <div class="service-preview-grid">
+            
+            {% for service in services %}
+                <div class="service-preview-item">
+                    <!-- Icon dari Database -->
+                    <i class="{{ service.icon_class }}"></i>
+                    
+                    <h3 class="sp-title">{{ service.title }}</h3>
+                    <!-- Opsional: Tampilkan sedikit deskripsi jika ada -->
+                    <p class="sp-desc">Solusi digital terpadu untuk kebutuhan bisnis Anda.</p>
+                    
+                    <!-- TOMBOL KE DETAIL -->
+                    <a href="{% url 'service_detail' service.slug %}" 
+                       style="color: var(--accent); text-decoration: none; font-weight: 700; display: inline-block; margin-top: 1rem;">
+                        Lihat Detail &rarr;
+                    </a>
+                </div>
+            {% empty %}
+                <p>Belum ada layanan yang tersedia.</p>
+            {% endfor %}
+            
+        </div>
+    </main>
+{% endblock %}

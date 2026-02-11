@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <main class="container">
+        <div style="height: 100px;"></div>
+
+        <!-- Judul Service -->
+        <div class="section-title">
+            <span>{{ service.title }}</span>
+        </div>
+
+        <!-- Deskripsi Utama -->
+        <div class="hero-sub" style="margin-bottom: 4rem; text-align: left; border: none; padding: 0; background: transparent;">
+            <p style="font-size: 1.2rem;">
+                <strong>Visuals That Don't Just Look Good—They Sell.</strong>
+            </p>
+            <p style="color: #aaa; font-size: 1rem; line-height: 1.6;">
+                Di dunia yang penuh gangguan, kami bikin brand Anda jadi pusat perhatian. 
+                Kombinasi estetika seni dengan strategi komunikasi yang mematikan.
+            </p>
+        </div>
+
+        <!-- --- LAYOUT SUB SERVICE GRID (Memanggil Data DB) --- -->
+        <div class="sub-service-grid">
+            
+            <!-- Looping Data dari Model ServiceFeature -->
+            {% for feature in service.features.all %}
+                <div class="sub-service-item">
+                    <h5>{{ feature.title }}</h5>
+                    <p>{{ feature.description }}</p>
+                </div>
+            {% empty %}
+                <p>Belum ada detail fitur untuk layanan ini. Tambahkan di Admin Panel.</p>
+            {% endfor %}
+            
+        </div>
+    </main>
+{% endblock %}
