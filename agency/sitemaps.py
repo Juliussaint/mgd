@@ -1,5 +1,7 @@
 from django.contrib.sitemaps import Sitemap
-from .models import Project, Post, Service
+from agency.models import Project
+from blog.models import Post 
+
 
 class StaticViewSitemap(Sitemap):
     changefreq = 'monthly'
@@ -17,6 +19,7 @@ class BlogSitemap(Sitemap):
     changefreq = 'daily'
     priority = 0.6
     def items(self):
+        # Mengambil Post dari model blog
         return Post.objects.filter(status='published')
     def lastmod(self, obj):
         return obj.updated_at
