@@ -11,7 +11,7 @@ class ProjectSitemap(Sitemap):
     changefreq = 'weekly'
     priority = 0.8
     def items(self):
-        return Project.objects.filter(status='published')
+        return Project.objects.filter(status='title')
     def lastmod(self, obj):
         return obj.created_at
 
