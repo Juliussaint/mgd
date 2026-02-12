@@ -46,11 +46,11 @@ DATABASES = {
 # Use unique prefixes if multiple apps share same domain
 STATIC_URL = "/static/"
 
-MEDIA_URL = "/media/"
-
 STATIC_ROOT = BASE_DIR / "staticfiles"
 
-MEDIA_ROOT = BASE_DIR / 'media_root'
+MEDIA_URL = "/media/"
+
+MEDIA_ROOT = BASE_DIR / 'media'
 
 
 # ----------------------------
