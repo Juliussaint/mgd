@@ -37,6 +37,9 @@
 
     <!-- Custom CSS -->
     <link rel="stylesheet" href="{% static 'css/style.css' %}">
+
+    <!-- Favicon -->
+    <link rel="icon" href="{% static 'img/favicon.ico' %}" type="image/x-icon">
 </head>
 <body>
     <!-- Custom Cursor -->
@@ -57,7 +60,17 @@
                 <a href="{% url 'home' %}"><img src="{% static 'agency/img/primary-logo-mgd.png' %}" alt="Mega Genius Digital Logo"></a>
             </div>
         </div>
-        <ul class="nav-links">
+
+        <!-- --- TAMBAHKAN TOMBOL HAMBURGER INI --- -->
+        <div class="menu-toggle" id="mobile-menu-btn">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+        <!-- ------------------------------- -->
+
+        <!-- Tambahkan class 'nav-menu' untuk toggle CSS -->
+        <ul class="nav-links nav-menu">
             <li class="magnetic-area"><a href="{% url 'work' %}" class="nav-link magnetic-wrap">Work</a></li>
             <li class="magnetic-area"><a href="{% url 'expertise_list' %}" class="nav-link magnetic-wrap">Expertise</a></li>
             <li class="magnetic-area"><a href="{% url 'about' %}" class="nav-link magnetic-wrap">About MGD</a></li>

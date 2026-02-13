@@ -1,11 +1,15 @@
+/* =========================================
+   MEGA GENIUS DIGITAL - MASTER CSS
+   ========================================= */
+
 :root {
     /* MGD Brand Colors */
     --bg-color: #050505;
     --text-color: #f0f0f0;
     --accent: #39FF14; /* MGD Green */
-    --accent-dim: rgba(57, 255, 20, 0.1);
+    --accent-dim: rgba(57,255, 20, 0.1);
     --card-bg: rgba(20, 20, 20, 0.6);
-    --border-color: rgba(57, 255, 20, 0.2);
+    --border-color: rgba(57,255, 20, 0.2);
     
     /* Typography */
     --font-display: 'Syncopate', sans-serif;
@@ -17,7 +21,7 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    cursor: none; /* Hide default cursor for custom one */
+    cursor: none;
 }
 
 body {
@@ -27,6 +31,42 @@ body {
     overflow-x: hidden;
     width: 100vw;
     height: 100%;
+}
+
+/* --- PRELOADER (CSS ONLY) --- */
+#preloader {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: #000;
+    z-index: 9999;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    animation: hidePreloader 0.5s 2.5s forwards;
+}
+
+.preloader-content {
+    font-family: var(--font-display);
+    color: var(--accent);
+    font-size: 2rem;
+    animation: pulse 1.5s infinite;
+}
+
+@keyframes pulse {
+    0% { opacity: 0.5; }
+    50% { opacity: 1; }
+    100% { opacity: 0.5; }
+}
+
+@keyframes hidePreloader {
+    to {
+        opacity: 0;
+        visibility: hidden;
+        pointer-events: none;
+    }
 }
 
 /* --- Custom Cursor --- */
@@ -73,6 +113,20 @@ body:hover .cursor-outline.hovered {
     opacity: 0.8;
 }
 
+/* --- Bottom Scroll Light --- */
+.bottom-light-beam {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 3px;
+    background: var(--accent);
+    box-shadow: 0 -10px 30px 5px var(--accent);
+    z-index: 100;
+    opacity: 0;
+    transition: opacity 0.3s;
+}
+
 /* --- Layout --- */
 .container {
     width: 92%;
@@ -98,7 +152,7 @@ nav {
 }
 
 .nav-logo img {
-    height: 50px; /* Adjust size based on your logo file */
+    height: 50px;
     width: auto; 
 }
 
@@ -160,7 +214,7 @@ header {
 }
 
 .hero-logo-container img {
-    max-width: 200px; /* Simplified MGD Logo size */
+    max-width: 200px;
     width: 100%;
     filter: drop-shadow(0 0 20px rgba(57,255,20,0.3));
 }
@@ -256,7 +310,7 @@ h1 {
     100% { transform: translateX(-50%); }
 }
 
-/* --- Projects Section --- */
+/* --- SECTIONS COMMON --- */
 .section-title {
     font-family: var(--font-display);
     font-size: 2.5rem;
@@ -269,11 +323,12 @@ h1 {
 }
 
 .section-title img {
-    height: 40px; /* Secondary logo stamp */
+    height: 40px;
     opacity: 0.8;
 }
 
-.projects-grid {
+/* --- Projects & Services Grid --- */
+.projects-grid, .service-preview-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
     gap: 3rem;
@@ -351,86 +406,6 @@ h1 {
     font-weight: 700;
 }
 
-/* Style khusus untuk wrapper icon Service */
-.service-icon-wrapper {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 80px;
-    height: 80px;
-    margin-bottom: 1.5rem;
-    /* Opsional: Beri background lingkaran transparan */
-    background: rgba(255, 255, 255, 0.05);
-    border-radius: 50%;
-    border: 1px solid var(--border-color);
-}
-
-.service-icon-wrapper i {
-    font-size: 2.5rem; /* Ukuran ikon */
-    color: var(--accent); /* Ikuti warna aksen global */
-}
-
-/* --- Footer --- */
-footer {
-    margin-top: 5rem;
-    padding: 6rem 0 3rem 0;
-    border-top: 1px solid var(--border-color);
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-}
-
-.footer-logo img {
-    height: 60px;
-    width: auto;
-    margin-bottom: 2rem;
-    opacity: 0.8;
-}
-
-.footer-links {
-    display: flex;
-    gap: 2rem;
-    margin-bottom: 3rem;
-}
-
-.footer-links a {
-    color: #888;
-    text-decoration: none;
-    font-family: var(--font-body);
-    transition: color 0.3s;
-}
-
-.footer-links a:hover {
-    color: var(--accent);
-}
-
-.copyright {
-    font-size: 0.8rem;
-    color: #555;
-}
-
-/* --- Bottom Scroll Light --- */
-.bottom-light-beam {
-    position: fixed;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    height: 3px;
-    background: var(--accent);
-    box-shadow: 0 -10px 30px 5px var(--accent);
-    z-index: 100;
-    opacity: 0;
-    transition: opacity 0.3s;
-}
-
-/* --- Mobile --- */
-@media (max-width: 768px) {
-    h1 { font-size: 12vw; }
-    .nav-links { display: none; }
-    .projects-grid { grid-template-columns: 1fr; }
-    .hero-logo-container img { max-width: 150px; }
-}
 /* --- Client Logos --- */
 .client-logos {
     padding: 4rem 0;
@@ -543,12 +518,13 @@ footer {
     color: var(--accent);
     font-weight: 700;
 }
+
 /* --- Logo Marquee (Scrolling Logos) --- */
 .client-marquee-section {
     width: 100%;
     overflow: hidden;
     padding: 3rem 0;
-    background: #080808; /* Sedikit lebih terang dari background utama */
+    background: #080808;
     border-top: 1px solid var(--border-color);
     border-bottom: 1px solid var(--border-color);
     position: relative;
@@ -580,7 +556,7 @@ footer {
     font-family: var(--font-display);
     font-size: 1.8rem;
     font-weight: 700;
-    color: #555; /* Warna abu-abu */
+    color: #555;
     margin-right: 5rem;
     transition: 0.3s;
     text-transform: uppercase;
@@ -589,360 +565,17 @@ footer {
 }
 
 .logo-marquee-item:hover {
-    color: var(--accent); /* Berubah jadi hijau saat di-hover */
+    color: var(--accent);
     text-shadow: 0 0 15px var(--accent);
     cursor: default;
 }
 
-/* Animation Keyframes */
 @keyframes marqueeLogos {
     0% { transform: translateX(0); }
     100% { transform: translateX(-33.33%); } 
-    /* Nilai -33.33% karena kita menduplikasi konten 3x (100% / 3) */
 }
 
-/* Footer Section Styling */
-footer {
-  background-color: #0a0a0a;
-  color: #ffffff;
-  padding: 60px 20px 30px;
-}
-
-.footer-content {
-  max-width: 1200px;
-  margin: 0 auto;
-  display: grid;
-  grid-template-columns: 2fr 1fr 1fr 1fr;
-  gap: 40px;
-  margin-bottom: 40px;
-}
-
-.footer-brand h2 {
-  font-size: 24px;
-  font-weight: 700;
-  margin-bottom: 15px;
-}
-
-.footer-brand p {
-  font-size: 14px;
-  line-height: 1.6;
-  color: #b0b0b0;
-  margin-bottom: 20px;
-}
-
-.social-links {
-  display: flex;
-  gap: 15px;
-}
-
-.social-links a {
-  color: #ffffff;
-  text-decoration: none;
-  font-size: 14px;
-  transition: color 0.3s;
-}
-
-.social-links a:hover {
-  color: #4a9eff;
-}
-
-
-/* --- Styling khusus untuk Sub-Service Grid di dalam Card --- */
-.service-details .sub-service-grid {
-    display: grid;
-    grid-template-columns: 1fr; /* Default 1 kolom untuk mobile */
-    gap: 1.2rem;
-    margin-top: 1.5rem;
-    border-top: 1px solid rgba(255, 255, 255, 0.1);
-    padding-top: 1.5rem;
-}
-
-/* Agar jadi 2 kolom jika layar cukup lebar (optional) */
-@media (min-width: 768px) {
-    .service-details .sub-service-grid {
-        grid-template-columns: 1fr 1fr; 
-    }
-}
-
-.sub-service-item {
-    background: rgba(255, 255, 255, 0.03);
-    border: 1px solid rgba(255, 255, 255, 0.05);
-    padding: 1rem;
-    transition: all 0.3s;
-}
-
-.sub-service-item:hover {
-    background: rgba(255, 255, 255, 0.06);
-    border-color: var(--accent);
-    transform: translateX(5px);
-}
-
-.sub-service-item h5 {
-    color: var(--accent);
-    margin: 0 0 0.5rem 0;
-    font-size: 1rem;
-    text-transform: uppercase;
-    letter-spacing: 0.5px;
-}
-
-.sub-service-item p {
-    font-size: 0.85rem;
-    color: #aaa;
-    margin: 0;
-    line-height: 1.5;
-}
-
-/* Galeri Gambar Detail */
-.project-gallery {
-    padding: 2rem 0;
-}
-
-.gallery-grid {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr); /* 2 Kolom */
-    gap: 2rem;
-}
-
-.gallery-item {
-    width: 100%;
-    aspect-ratio: 16 / 9; /* Membuat rasio gambar tetap (Landscape) */
-    overflow: hidden;
-    border-radius: 4px;
-    transition: 0.3s;
-}
-
-.gallery-item img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    transition: transform 0.5s var(--easing);
-    filter: grayscale(100%);
-}
-
-.gallery-item:hover img {
-    transform: scale(1.05);
-    filter: grayscale(0%);
-}
-
-/* Mobile Responsive: 1 Kolom */
-@media (max-width: 768px) {
-    .gallery-grid {
-        grid-template-columns: 1fr;
-    }
-}
-
-/* ================================
-   Premium Startup Footer Styling
-================================ */
-
-footer {
-  background: linear-gradient(180deg, #0a0a0a 0%, #000 100%);
-  color: #fff;
-  padding: 80px 20px 30px;
-  position: relative;
-  overflow: hidden;
-}
-
-footer::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  height: 1px;
-  background: linear-gradient(90deg, transparent, #00ff88, transparent);
-}
-
-footer::after {
-  content: "";
-  position: absolute;
-  bottom: -220px;
-  left: 50%;
-  width: 720px;
-  height: 720px;
-  background: radial-gradient(circle, rgba(0,255,136,.08), transparent 70%);
-  transform: translateX(-50%);
-  pointer-events: none;
-}
-
-.footer-grid {
-  max-width: 1200px;
-  margin: 0 auto 50px;
-  display: grid;
-  grid-template-columns: 2.5fr 1fr 1fr 1.5fr;
-  gap: 60px;
-  text-align: left;
-}
-
-/* Brand */
-
-.footer-brand img {
-  width: 56px;
-  margin-bottom: 18px;
-}
-
-.footer-brand p {
-  font-size: 14px;
-  line-height: 1.9;
-  color: #9a9a9a;
-  max-width: 380px;
-  margin-bottom: 24px;
-}
-
-/* Social SVG icons */
-
-.social-links {
-  display: flex;
-  gap: 14px;
-  flex-wrap: wrap;
-}
-
-.social-links a {
-  width: 38px;
-  height: 38px;
-  border-radius: 50%;
-  border: 1px solid #222;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  transition: all .3s ease;
-}
-
-.social-links svg {
-  width: 18px;
-  height: 18px;
-  fill: #bbb;
-  transition: fill .3s ease;
-}
-
-.social-links a:hover {
-  border-color: #00ff88;
-  background: rgba(0,255,136,.08);
-  transform: translateY(-3px);
-}
-
-.social-links a:hover svg {
-  fill: #00ff88;
-}
-
-/* Columns */
-
-.footer-col h3 {
-  font-size: 13px;
-  letter-spacing: 1.5px;
-  text-transform: uppercase;
-  margin-bottom: 22px;
-  color: #00ff88;
-}
-
-.footer-links {
-  list-style: none;
-  padding: 0;
-  display: flex;
-  flex-direction: column;
-  gap: 14px;
-}
-
-.footer-links li {
-  text-align: left;
-}
-
-.footer-links li a {
-  color: #b0b0b0;
-  font-size: 14px;
-  text-decoration: none;
-  position: relative;
-  transition: color .25s ease;
-}
-
-.footer-links li a::before {
-  content: '';
-  position: absolute;
-  bottom: -3px;
-  left: 0;
-  width: 0;
-  height: 2px;
-  background: #00ff88;
-  opacity: .6;
-  transition: width .25s ease;
-}
-
-.footer-links li a:hover {
-  color: #fff;
-}
-
-.footer-links li a:hover::before {
-  width: 100%;
-}
-
-/* Footer Bottom */
-
-.footer-bottom {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding-top: 28px;
-  border-top: 1px solid #1a1a1a;
-  display: flex;
-  align-items: center;
-  font-size: 12px;
-  color: #777;
-  letter-spacing: .3px;
-}
-
-.footer-bottom p {
-  margin: 0;
-  text-align: left;
-}
-
-.footer-legal {
-  display: flex;
-  gap: 22px;
-  margin-left: auto;
-  text-align: right;
-}
-
-.footer-legal a {
-  color: #777;
-  text-decoration: none;
-  transition: color .25s ease;
-}
-
-.footer-legal a:hover {
-  color: #00ff88;
-}
-
-/* Responsive */
-
-@media (max-width: 992px) {
-  .footer-grid {
-    grid-template-columns: 1fr 1fr;
-    gap: 40px;
-  }
-
-  .footer-brand {
-    grid-column: 1 / -1;
-  }
-}
-
-@media (max-width: 768px) {
-  .footer-grid {
-    grid-template-columns: 1fr;
-    gap: 35px;
-  }
-
-  .footer-bottom {
-    flex-direction: column;
-    gap: 18px;
-    text-align: center;
-  }
-
-  .footer-legal {
-    flex-direction: column;
-    gap: 10px;
-  }
-}
-
-/* --- Style Kartu Utama (Clean) --- */
+/* --- Style Kartu Service Main --- */
 .service-card-main {
     background: var(--card-bg);
     border: 1px solid var(--border-color);
@@ -951,13 +584,31 @@ footer::after {
     transition: all 0.3s var(--easing);
     display: flex;
     flex-direction: column;
-    align-items: flex-start; /* Rata kiri */
+    align-items: flex-start;
 }
 
 .service-card-main:hover {
     border-color: var(--accent);
-    background: rgba(255, 255, 255, 0.05);
+    background: rgba(255,255, 255, 0.05);
     transform: translateY(-5px);
+}
+
+/* --- Icon Wrapper Service --- */
+.service-icon-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 80px;
+    height: 80px;
+    margin-bottom: 1.5rem;
+    background: rgba(255,255,255, 0.05);
+    border-radius: 50%;
+    border: 1px solid var(--border-color);
+}
+
+.service-icon-wrapper i {
+    font-size: 2.5rem;
+    color: var(--accent);
 }
 
 /* --- MODAL OVERLAY --- */
@@ -968,9 +619,9 @@ footer::after {
     width: 100%;
     height: 100%;
     background: rgba(0, 0, 0, 0.85);
-    backdrop-filter: blur(10px); /* Efek blur modern */
+    backdrop-filter: blur(10px);
     z-index: 9999;
-    display: none; /* Hidden by default */
+    display: none;
     justify-content: center;
     align-items: center;
     opacity: 0;
@@ -984,15 +635,15 @@ footer::after {
 
 /* --- MODAL CONTENT BOX --- */
 .modal-content {
-    background: #0f0f0f; /* Sedikit lebih terang dari body */
+    background: #0f0f0f;
     width: 90%;
     max-width: 900px;
-    max-height: 85vh; /* Agar tidak keluar layar */
+    max-height: 85vh;
     border: 1px solid var(--border-color);
     border-radius: 4px;
     padding: 3rem;
     position: relative;
-    overflow-y: auto; /* Scroll jika konten panjang */
+    overflow-y: auto;
     box-shadow: 0 20px 50px rgba(0,0,0,0.8);
     transform: scale(0.9);
     transition: transform 0.3s var(--easing);
@@ -1002,7 +653,6 @@ footer::after {
     transform: scale(1);
 }
 
-/* Close Button */
 .modal-close {
     position: absolute;
     top: 20px;
@@ -1019,7 +669,6 @@ footer::after {
     color: var(--accent);
 }
 
-/* Modal Header */
 .modal-header {
     display: flex;
     align-items: center;
@@ -1041,7 +690,6 @@ footer::after {
     text-transform: uppercase;
 }
 
-/* Scrollbar khusus di modal */
 .modal-content::-webkit-scrollbar {
     width: 8px;
 }
@@ -1054,4 +702,386 @@ footer::after {
 }
 .modal-content::-webkit-scrollbar-thumb:hover {
     background: var(--accent);
+}
+
+/* --- Sub Service Grid (Detail) --- */
+.service-details .sub-service-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1.2rem;
+    margin-top: 1.5rem;
+    border-top: 1px solid rgba(255,255,255, 0.1);
+    padding-top: 1.5rem;
+}
+
+@media (min-width: 768px) {
+    .service-details .sub-service-grid {
+        grid-template-columns: 1fr 1fr; 
+    }
+}
+
+.sub-service-item {
+    background: rgba(255,255,255, 0.03);
+    border: 1px solid rgba(255,255,255, 0.05);
+    padding: 1rem;
+    transition: all 0.3s;
+}
+
+.sub-service-item:hover {
+    background: rgba(255,255,255, 0.06);
+    border-color: var(--accent);
+    transform: translateX(5px);
+}
+
+.sub-service-item h5 {
+    color: var(--accent);
+    margin: 0 0 0.5rem 0;
+    font-size: 1rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.sub-service-item p {
+    font-size: 0.85rem;
+    color: #aaa;
+    margin: 0;
+    line-height: 1.5;
+}
+
+/* --- Project Gallery --- */
+.project-gallery {
+    padding: 2rem 0;
+}
+
+.gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2rem;
+}
+
+.gallery-item {
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    overflow: hidden;
+    border-radius: 4px;
+    transition: 0.3s;
+}
+
+.gallery-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s var(--easing);
+    filter: grayscale(100%);
+}
+
+.gallery-item:hover img {
+    transform: scale(1.05);
+    filter: grayscale(0%);
+}
+
+/* --- PREMIUM FOOTER (FINAL VERSION) --- */
+footer {
+    background: linear-gradient(180deg, #0a0a0a 0%, #000 100%);
+    color: #fff;
+    padding: 80px 20px 30px;
+    position: relative;
+    overflow: hidden;
+}
+
+footer::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, #00ff88, transparent);
+}
+
+footer::after {
+    content: "";
+    position: absolute;
+    bottom: -220px;
+    left: 50%;
+    width: 720px;
+    height: 720px;
+    background: radial-gradient(circle, rgba(0,255,136,.08), transparent 70%);
+    transform: translateX(-50%);
+    pointer-events: none;
+}
+
+.footer-grid {
+    max-width: 1200px;
+    margin: 0 auto 50px;
+    display: grid;
+    grid-template-columns: 2.5fr 1fr 1fr 1.5fr;
+    gap: 60px;
+    text-align: left;
+}
+
+/* Footer Brand */
+.footer-brand img {
+    width: 56px;
+    margin-bottom: 18px;
+}
+
+.footer-brand p {
+    font-size: 14px;
+    line-height: 1.9;
+    color: #9a9a9a;
+    max-width: 380px;
+    margin-bottom: 24px;
+}
+
+/* Social Icons */
+.social-links {
+    display: flex;
+    gap: 14px;
+    flex-wrap: wrap;
+}
+
+.social-links a {
+    width: 38px;
+    height: 38px;
+    border-radius: 50%;
+    border: 1px solid #222;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all .3s ease;
+}
+
+.social-links svg {
+    width: 18px;
+    height: 18px;
+    fill: #bbb;
+    transition: fill .3s ease;
+}
+
+.social-links a:hover {
+    border-color: #00ff88;
+    background: rgba(0,255,136,.08);
+    transform: translateY(-3px);
+}
+
+.social-links a:hover svg {
+    fill: #00ff88;
+}
+
+/* Footer Columns */
+.footer-col h3 {
+    font-size: 13px;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    margin-bottom: 22px;
+    color: #00ff88;
+}
+
+.footer-links {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+}
+
+.footer-links li {
+    text-align: left;
+}
+
+.footer-links li a {
+    color: #b0b0b0;
+    font-size: 14px;
+    text-decoration: none;
+    position: relative;
+    transition: color .25s ease;
+}
+
+.footer-links li a::before {
+    content: '';
+    position: absolute;
+    bottom: -3px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: #00ff88;
+    opacity: .6;
+    transition: width .25s ease;
+}
+
+.footer-links li a:hover {
+    color: #fff;
+}
+
+.footer-links li a:hover::before {
+    width: 100%;
+}
+
+/* Footer Bottom */
+.footer-bottom {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding-top: 28px;
+    border-top: 1px solid #1a1a1a;
+    display: flex;
+    align-items: center;
+    font-size: 12px;
+    color: #777;
+    letter-spacing: .3px;
+}
+
+.footer-bottom p {
+    margin: 0;
+    text-align: left;
+}
+
+.footer-legal {
+    display: flex;
+    gap: 22px;
+    margin-left: auto;
+    text-align: right;
+}
+
+.footer-legal a {
+    color: #777;
+    text-decoration: none;
+    transition: color .25s ease;
+}
+
+.footer-legal a:hover {
+    color: #00ff88;
+}
+
+/* =========================================
+   MOBILE FIRST & RESPONSIVE DESIGN
+   ========================================= */
+
+/* 1. Hamburger Menu & Mobile Nav */
+.menu-toggle {
+    display: none;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 30px;
+    height: 20px;
+    cursor: pointer;
+    z-index: 1001;
+}
+
+.menu-toggle span {
+    width: 100%;
+    height: 2px;
+    background: #fff;
+    border-radius: 2px;
+    transition: 0.3s var(--easing);
+}
+
+/* Animasi Hamburger jadi X */
+.menu-toggle.active span:nth-child(1) {
+    transform: rotate(45deg) translate(6px, 6px);
+}
+.menu-toggle.active span:nth-child(2) {
+    opacity: 0;
+}
+.menu-toggle.active span:nth-child(3) {
+    transform: rotate(-45deg) translate(6px, -6px);
+}
+
+/* Mobile View (< 900px) */
+@media (max-width: 900px) {
+    .menu-toggle {
+        display: flex;
+    }
+
+    .nav-links {
+        position: fixed;
+        top: 0;
+        right: -100%;
+        width: 100%;
+        height: 100vh;
+        background: #050505;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        transition: 0.5s var(--easing);
+        gap: 2rem;
+        z-index: 1000;
+        border-top: 1px solid var(--accent);
+    }
+
+    .nav-links.active {
+        right: 0;
+    }
+
+    .nav-link {
+        font-size: 1.5rem;
+    }
+    
+    .nav-logo { margin-left: 1rem; }
+    .menu-toggle { margin-right: 1.5rem; }
+}
+
+/* 2. Grids & Layout (< 768px) */
+@media (max-width: 768px) {
+    h1 {
+        font-size: 2.5rem;
+    }
+    
+    .projects-grid,
+    .service-preview-grid,
+    .sub-service-grid,
+    .stats-section,
+    .gallery-grid {
+        grid-template-columns: 1fr;
+        padding: 0 1rem;
+    }
+    
+    .project-card {
+        height: 400px;
+    }
+    
+    /* Stack Footer 1 kolom */
+    .footer-grid {
+        grid-template-columns: 1fr;
+        gap: 35px;
+        text-align: left;
+    }
+    
+    .footer-bottom {
+        flex-direction: column;
+        gap: 18px;
+        text-align: center;
+    }
+
+    .footer-legal {
+        flex-direction: column;
+        gap: 10px;
+        margin-left: 0;
+    }
+
+    /* Hide Cursor on Touch */
+    @media (hover: none) {
+        .cursor-dot, .cursor-outline {
+            display: none !important;
+        }
+        body, a, button {
+            cursor: pointer;
+        }
+    }
+}
+
+/* 3. Tablet View (769px - 1100px) */
+@media (min-width: 769px) and (max-width: 1100px) {
+    .projects-grid,
+    .service-preview-grid {
+        grid-template-columns: 1fr 1fr;
+    }
+    
+    .footer-grid {
+        grid-template-columns: 1fr 1fr;
+    }
+    
+    .footer-brand {
+        grid-column: 1 / -1;
+    }
 }

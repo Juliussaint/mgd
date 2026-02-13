@@ -14,7 +14,8 @@ if(cursorDot && cursorOutline) {
         cursorOutline.style.top = `${posY}px`;
     });
 
-    // UPDATE: Tambahkan selector baru agar cursor bereaksi di card service dan modal
+    // Update: Tambahkan selector baru agar cursor bereaksi di card service dan modal
+    // Jangan lupa tambahkan kurung kurawal tutup { ... } di akhir forEach
     const interactiveElements = document.querySelectorAll('a, .project-card, .cta-btn, .service-card-main, .modal-content');
     interactiveElements.forEach(el => {
         el.addEventListener('mouseenter', () => cursorOutline.classList.add('hovered'));
@@ -138,8 +139,9 @@ magnets.forEach((magnet) => {
 
 /**
  * 4. 3D TILT CARDS
+ * PERBAIKAN: Class selector diubah ke .project-card agar sesuai CSS
  */
-const cards = document.querySelectorAll('.tilt-card');
+const cards = document.querySelectorAll('.project-card');
 cards.forEach(card => {
     const glare = card.querySelector('.card-glare');
     card.addEventListener('mousemove', (e) => {
@@ -185,9 +187,7 @@ function openServiceModal(serviceId) {
         return;
     }
 
-    // 2. PERBAIKI KRITIS: Ambil elemen kartu yang tepat
-    // Kita pakai previousElementSibling karena urutan HTML:
-    // <article> (Kartu) -> lalu di bawahnya -> <div id="hidden...">
+    // 2. Ambil elemen kartu yang tepat
     const serviceCard = hiddenContentDiv.previousElementSibling;
 
     // Cek lagi jika elemen kartu tidak ketemu (misal ada komentar HTML di tengah)
@@ -208,7 +208,7 @@ function openServiceModal(serviceId) {
     }
 
     // 4. Ambil data dari Kartu yang DIPILIH (Bukan kartu pertama)
-    const cardTitle = serviceCard.querySelector('.card-title');
+    const cardTitle = serviceCard.querySelector('.sp-title');
     const cardIcon = serviceCard.querySelector('.service-icon-wrapper i');
 
     // 5. Set Data ke Modal
@@ -244,3 +244,32 @@ window.onclick = function(event) {
         closeServiceModal();
     }
 }
+
+// --- MOBILE MENU TOGGLE ---
+const mobileBtn = document.getElementById('mobile-menu-btn');
+const navLinks = document.querySelector('.nav-links');
+const navItems = document.querySelectorAll('.nav-link');
+
+if (mobileBtn) {
+    mobileBtn.addEventListener('click', () => {
+        // Toggle class active pada tombol dan menu
+        mobileBtn.classList.toggle('active');
+        navLinks.classList.toggle('active');
+        
+        // Matikan scroll background saat menu terbuka
+        if (navLinks.classList.contains('active')) {
+            document.body.style.overflow = 'hidden';
+        } else {
+            document.body.style.overflow = 'auto';
+        }
+    });
+}
+
+// Tutup menu saat salah satu link diklik
+navItems.forEach(item => {
+    item.addEventListener('click', () => {
+        mobileBtn.classList.remove('active');
+        navLinks.classList.remove('active');
+        document.body.style.overflow = 'auto';
+    });
+});
